@@ -1,0 +1,37 @@
+@import "bulma/css/bulma.css";
+
+.is-size-0 {
+    font-size: 8rem !important;
+}
+@media screen and (max-width: 768px) {
+    .is-size-0-mobile {
+        font-size: 8rem !important;
+    }
+}
+@media screen and (min-width: 769px), print {
+    .is-size-0-tablet {
+        font-size: 8rem !important;
+    }
+}
+@media screen and (max-width: 823px) {
+    .is-size-0-touch {
+        font-size: 8rem !important;
+    }
+}
+@media screen and (min-width: 824px) {
+    .is-size-0-desktop {
+        font-size: 8rem !important;
+    }
+}
+@media screen and (min-width: 1216px) {
+    .is-size-0-widescreen {
+        font-size: 8rem !important;
+    }
+}
+@media screen and (min-width: 1408px) {
+    .is-size-0-fullhd {
+        font-size: 8rem !important;
+    }
+}
+
+
