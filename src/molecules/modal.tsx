@@ -1,4 +1,4 @@
-import { Children, type FC, type PropsWithChildren, type RefObject } from "react"
+import { type FC, type PropsWithChildren, type RefObject } from "react"
 
 export const Modal: FC<PropsWithChildren<{ ref: RefObject<HTMLDivElement | null> }>> = ({ ref, children }) => {
     return <div ref={ref} className="modal">

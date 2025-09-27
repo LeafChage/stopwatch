@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import type { LabeledTimestamp } from "./timestamp";
+import type { LabeledTimestamp } from "./labeled-timestamp";
 
 export type TimestampLog = Map<string, LabeledTimestamp>;
 
