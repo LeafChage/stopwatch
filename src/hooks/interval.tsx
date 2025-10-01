@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-type StopWatchCondition = | "pausing" | "running" | "initialized";
+export type StopWatchCondition = | "pausing" | "running" | "initialized";
 type StopWatchState = {
     currentMs: number,
     condition: StopWatchCondition,

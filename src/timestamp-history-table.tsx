@@ -2,13 +2,20 @@ import type { FC } from "react";
 import { TimeText } from "./atoms/time";
 import type { TimestampLog } from "./model/timestamp-log";
 
-export const TimestampHistoryTable: FC<{ logs: TimestampLog }> = ({ logs }) => {
+export const TimestampHistoryTable: FC<{
+    logs: TimestampLog,
+    onDelete: (id: string) => void
+}> = ({ logs, onDelete }) => {
     const lines = [];
-    for (const [key, v] of logs) {
+    for (const [key, v] of Object.entries(logs)) {
         lines.push(<tr key={key}>
             <td>{v.label}</td>
             <td><TimeText ms={v.ts} /></td>
-            <td> <button className="button is-small is-danger">delete</button> </td>
+            <td>
+                <button className="button is-small is-danger" onClick={() => onDelete(key)}>
+                    delete
+                </button>
+            </td>
         </tr>)
     }
 
@@ -20,8 +27,6 @@ export const TimestampHistoryTable: FC<{ logs: TimestampLog }> = ({ logs }) => {
                 <th><abbr title="Delete"></abbr></th>
             </tr>
         </thead>
-        <tfoot>
-        </tfoot>
         <tbody>
             {lines}
         </tbody>

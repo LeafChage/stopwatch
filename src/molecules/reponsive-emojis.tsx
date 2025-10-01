@@ -5,8 +5,10 @@ export const ResponsiveEmojis: FC<{
     min: number,
     max: number,
     borderSize: "mobile"
-    type: "running" | "walking"
+    type: "running" | "walking" | "none"
 }> = ({ type, min, max, borderSize }) => {
+    if (type === "none") return <span></span>
+
     const emojis = [];
     for (let i = 0; i < min; i++) {
         emojis.push(<Emoji key={i} type={type} />);

@@ -1,17 +1,26 @@
 import { type FC, type PropsWithChildren, type RefObject } from "react"
 
+export const changeModalState = (ref: RefObject<HTMLDivElement | null>, to: "open" | "close") => () => {
+    if (!ref.current) return
+    switch (to) {
+        case "open":
+            ref.current.className = "modal is-active"
+            return
+        case "close":
+            ref.current.className = "modal"
+            return
+    }
+}
+
 export const Modal: FC<PropsWithChildren<{ ref: RefObject<HTMLDivElement | null> }>> = ({ ref, children }) => {
+    const close = changeModalState(ref, "close");
     return <div ref={ref} className="modal">
         <div className="modal-background"></div>
         <div className="modal-content">
             {children}
         </div>
         <button className="modal-close is-large" aria-label="close"
-            onClick={() => {
-                if (ref.current) {
-                    ref.current.className = "modal"
-                }
-            }}
+            onClick={close}
         ></button>
     </div>
 }
@@ -20,9 +29,6 @@ export const ModalButton: FC<PropsWithChildren<{
     ref: RefObject<HTMLDivElement | null>
     className?: string
 }>> = ({ ref, children, className }) => {
-    return <button className={className} onClick={() => {
-        if (ref.current) {
-            ref.current.className = "modal is-active"
-        }
-    }}>{children}</button>
+    const open = changeModalState(ref, "open");
+    return <button className={className} onClick={open}>{children}</button>
 }
