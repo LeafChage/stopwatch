@@ -1,7 +1,6 @@
 import { type FC, type PropsWithChildren } from "react";
 import { Color } from "../bulma";
 
-
 const colorAttribute = (
     color: Color,
     isLight: boolean

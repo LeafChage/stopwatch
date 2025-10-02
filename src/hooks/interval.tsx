@@ -1,6 +1,13 @@
 import { useRef, useState } from "react";
 
 export type StopWatchCondition = | "pausing" | "running" | "initialized";
+export const StopWatchCondition = {
+    playable: (self: StopWatchCondition) => self === "initialized",
+    replayable: (self: StopWatchCondition) => self === "pausing",
+    stoppable: (self: StopWatchCondition) => self === "running",
+    refreshable: (self: StopWatchCondition) => self === "pausing",
+} as const;
+
 type StopWatchState = {
     currentMs: number,
     condition: StopWatchCondition,

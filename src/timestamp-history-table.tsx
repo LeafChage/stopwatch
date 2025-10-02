@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { TimeText } from "./atoms/time";
 import type { TimestampLog } from "./model/timestamp-log";
+import { Notification } from "./atoms/notification";
 
 export const TimestampHistoryTable: FC<{
     logs: TimestampLog,
@@ -19,16 +20,17 @@ export const TimestampHistoryTable: FC<{
         </tr>)
     }
 
-    return <table className="table is-fullwidth">
-        <thead>
-            <tr>
-                <th><abbr title="label">Label</abbr></th>
-                <th><abbr title="Timestamp">Ts</abbr></th>
-                <th><abbr title="Delete"></abbr></th>
-            </tr>
-        </thead>
-        <tbody>
-            {lines}
-        </tbody>
-    </table>
+    return lines.length === 0 ? <Notification color={"primary"}>There're not records. You can create record history.</Notification>
+        : (<table className="table is-fullwidth">
+            <thead>
+                <tr>
+                    <th><abbr title="label">Label</abbr></th>
+                    <th><abbr title="Timestamp">Ts</abbr></th>
+                    <th><abbr title="Delete"></abbr></th>
+                </tr>
+            </thead>
+            <tbody>
+                {lines}
+            </tbody>
+        </table>)
 }

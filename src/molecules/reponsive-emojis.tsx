@@ -14,9 +14,9 @@ export const ResponsiveEmojis: FC<{
         emojis.push(<Emoji key={i} type={type} />);
     }
     for (let i = min; i < max; i++) {
-        emojis.push(<span className={`is-hidden-${borderSize}`}><Emoji key={1} type={type} /></span>);
+        emojis.push(<span key={i} className={`is-hidden-${borderSize}`}><Emoji type={type} /></span>);
     }
-    return <span>
+    return <span >
         {emojis}
     </span >
 }

@@ -15,7 +15,7 @@ export const changeModalState = (ref: RefObject<HTMLDivElement | null>, to: "ope
 export const Modal: FC<PropsWithChildren<{ ref: RefObject<HTMLDivElement | null> }>> = ({ ref, children }) => {
     const close = changeModalState(ref, "close");
     return <div ref={ref} className="modal">
-        <div className="modal-background"></div>
+        <div className="modal-background" onClick={close}></div>
         <div className="modal-content">
             {children}
         </div>
@@ -27,8 +27,9 @@ export const Modal: FC<PropsWithChildren<{ ref: RefObject<HTMLDivElement | null>
 
 export const ModalButton: FC<PropsWithChildren<{
     ref: RefObject<HTMLDivElement | null>
-    className?: string
-}>> = ({ ref, children, className }) => {
+} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick">
+>> = ({ ref, children, ...props }) => {
     const open = changeModalState(ref, "open");
-    return <button className={className} onClick={open}>{children}</button>
+    const buttonProps = { ...props, onClick: open }
+    return <button {...buttonProps}>{children}</button>
 }
