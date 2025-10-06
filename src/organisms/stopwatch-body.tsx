@@ -1,11 +1,11 @@
 import { use, useRef, type ComponentProps, type FC } from 'react'
-import { StopWatchCondition, useStopwatch } from './hooks/interval';
-import { TimeText } from './atoms/time';
-import { ResponsiveEmojis } from './molecules/reponsive-emojis';
-import { Modal, ModalButton } from './molecules/modal';
-import { ConfigContext } from './contexts/config';
-import { TimestampFormWithContext } from './organisms/timestamp-form-with-context';
-import { PlayButton, RefreshButton, StopButton } from './atoms/icon-buttons';
+import { StopWatchCondition, useStopwatch } from '../hooks/interval';
+import { TimeText } from '../atoms/time';
+import { ResponsiveEmojis } from '../molecules/reponsive-emojis';
+import { Modal, ModalButton } from '../molecules/modal';
+import { ConfigContext } from '../contexts/config';
+import { TimestampFormWithContext } from '../organisms/timestamp-form-with-context';
+import { PlayButton, RefreshButton, StopButton } from '../atoms/icon-buttons';
 import { IoSave } from "react-icons/io5";
 
 const emojiType = (condition: StopWatchCondition, showing: boolean): ComponentProps<typeof ResponsiveEmojis>["type"] => {
@@ -15,7 +15,7 @@ const emojiType = (condition: StopWatchCondition, showing: boolean): ComponentPr
     return condition === "running" ? "running" : "walking"
 }
 
-export const A: FC = ({ }) => {
+export const StopwatchBody: FC = ({ }) => {
     const stopwatch = useStopwatch()
     const config = use(ConfigContext);
 
