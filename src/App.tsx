@@ -1,15 +1,19 @@
 import './App.css'
-import { ConfigContext } from './contexts/config';
+import { DesignContext, DesignHandleContext } from './contexts/config';
 import { NotificationProvider } from './contexts/notification';
+import { useToggle } from './hooks/toggle';
 import { StopwatchPage } from './stopwatch-page';
 
 function App() {
+    const [isShowingImage, toggleImage] = useToggle(false);
     return (
-        <ConfigContext value={{ isShowingImage: true }}>
+        <DesignHandleContext value={{ toggleImage }}>
             <NotificationProvider lifetimeMs={2000}>
-                <StopwatchPage />
+                <DesignContext value={{ isShowingImage }}>
+                    <StopwatchPage />
+                </DesignContext >
             </NotificationProvider>
-        </ConfigContext >
+        </DesignHandleContext>
     )
 }
 

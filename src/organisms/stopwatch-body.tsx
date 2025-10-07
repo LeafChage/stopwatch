@@ -3,7 +3,7 @@ import { StopWatchCondition, useStopwatch } from '../hooks/interval';
 import { TimeText } from '../atoms/time';
 import { ResponsiveEmojis } from '../molecules/reponsive-emojis';
 import { Modal, ModalButton } from '../molecules/modal';
-import { ConfigContext } from '../contexts/config';
+import { DesignContext } from '../contexts/config';
 import { TimestampFormWithContext } from '../organisms/timestamp-form-with-context';
 import { PlayButton, RefreshButton, StopButton } from '../atoms/icon-buttons';
 import { IoSave } from "react-icons/io5";
@@ -17,12 +17,12 @@ const emojiType = (condition: StopWatchCondition, showing: boolean): ComponentPr
 
 export const StopwatchBody: FC = ({ }) => {
     const stopwatch = useStopwatch()
-    const config = use(ConfigContext);
+    const { isShowingImage } = use(DesignContext)
 
     const ref = useRef<HTMLDivElement>(null);
 
     const emoji = <ResponsiveEmojis
-        type={emojiType(stopwatch.condition, config.isShowingImage)}
+        type={emojiType(stopwatch.condition, isShowingImage)}
         min={1}
         max={3}
         borderSize="mobile"

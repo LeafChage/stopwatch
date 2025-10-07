@@ -33,3 +33,4 @@ export const ModalButton: FC<PropsWithChildren<{
     const buttonProps = { ...props, onClick: open }
     return <button {...buttonProps}>{children}</button>
 }
+
